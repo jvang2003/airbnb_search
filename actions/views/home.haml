@@ -1,69 +1,74 @@
-%h1 AirBnB search
+%html
+	%head
+		%title Test for LocBox
+		%script{src: 'http://codeorigin.jquery.com/jquery-2.0.3.min.js'}
+		%script{src: 'http://codeorigin.jquery.com/ui/1.10.3/jquery-ui.min.js'}
+		%link{href: 'http://codeorigin.jquery.com/ui/1.10.3/themes/black-tie/jquery-ui.css', rel: 'stylesheet'}
+		:javascript
+			$(function(){
+			var cityList = [
+			"New York, NY",
+			"Los Angeles, CA",
+			"Chicago, IL",
+			"Houston, TX",
+			"Philadelphia, PA",
+			"Phoenix, AZ",
+			"San Antonio, TX",
+			"San Diego, CA",
+			"Dallas, TX",
+			"San Jose, CA",
+			"Austin, TX",
+			"Jacksonville, FL",
+			"Indianapolis, IN",
+			"San Francisco, CA",
+			"Columbus, OH",
+			"Fort Worth, TX",
+			"Charlotte, NC",
+			"Detroit, MI",
+			"El Paso, TX",
+			"Memphis, TN",
+			"Boston, MA",
+			"Seattle, WA",
+			"Denver, CO",
+			"Washington, DC",
+			"Nashville-Davidson, TN",
+			"Baltimore, MD",
+			"Louisville-Jefferson, KY",
+			"Portland, OR",
+			"Oklahoma City, OK",
+			"Milwaukee, WI",
+			"Las Vegas, NV	",
+			"Albuquerque, NM",
+			"Tucson, AZ",
+			"Fresno, CA",
+			"Sacramento, CA",
+			"Long Beach, CA",
+			"Kansas City, MO",
+			"Mesa, AZ",
+			"Virginia Beach, VA",
+			"Atlanta, GA",
+			"Colorado Springs, CO",
+			"Raleigh, NC",
+			"Omaha, NE",
+			"Miami, FL",
+			"Oakland, CA	",
+			"Tulsa, OK",
+			"Minneapolis, MN",
+			"Cleveland, OH	",
+			"Wichita, KS",
+			"Arlington, TX"
+			];
+			console.log(cityList);
+			$( "#city" ).autocomplete({
+			source: cityList
+			});
+			})
 
-%script{src: 'http://codeorigin.jquery.com/jquery-2.0.3.min.js'}
-%script{src: 'http://codeorigin.jquery.com/ui/1.10.3/jquery-ui.min.js'}
-%link{href: 'http://codeorigin.jquery.com/ui/1.10.3/themes/black-tie/jquery-ui.css', rel: 'stylesheet'}
-:javascript
-	$(function(){
-	var cityList = [
-	"New York, NY",
-	"Los Angeles, CA",
-	"Chicago, IL",
-	"Houston, TX",
-	"Philadelphia, PA",
-	"Phoenix, AZ",
-	"San Antonio, TX",
-	"San Diego, CA",
-	"Dallas, TX",
-	"San Jose, CA",
-	"Austin, TX",
-	"Jacksonville, FL",
-	"Indianapolis, IN",
-	"San Francisco, CA",
-	"Columbus, OH",
-	"Fort Worth, TX",
-	"Charlotte, NC",
-	"Detroit, MI",
-	"El Paso, TX",
-	"Memphis, TN",
-	"Boston, MA",
-	"Seattle, WA",
-	"Denver, CO",
-	"Washington, DC",
-	"Nashville-Davidson, TN",
-	"Baltimore, MD",
-	"Louisville-Jefferson, KY",
-	"Portland, OR",
-	"Oklahoma City, OK",
-	"Milwaukee, WI",
-	"Las Vegas, NV	",
-	"Albuquerque, NM",
-	"Tucson, AZ",
-	"Fresno, CA",
-	"Sacramento, CA",
-	"Long Beach, CA",
-	"Kansas City, MO",
-	"Mesa, AZ",
-	"Virginia Beach, VA",
-	"Atlanta, GA",
-	"Colorado Springs, CO",
-	"Raleigh, NC",
-	"Omaha, NE",
-	"Miami, FL",
-	"Oakland, CA	",
-	"Tulsa, OK",
-	"Minneapolis, MN",
-	"Cleveland, OH	",
-	"Wichita, KS",
-	"Arlington, TX"
-	];
-	console.log(cityList);
-	$( "#city" ).autocomplete({
-	source: cityList
-	});
-	})
+%body
+	%h1 AirBnB search
 
-%label city:
-%form{action: '/lookup'}
-	%input#city{name: 'city'} 
-	%button Go
+
+	%label city:
+	%form{action: '/lookup'}
+		%input#city{name: 'city'} 
+		%button Go

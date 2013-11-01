@@ -1,18 +1,23 @@
-%h1 Results for #{params[:city]}
+%html
+	%head
+		%title LocBox test - Results for #{params[:city]}
 
-%a{href: '/'} New search
+	%body
+		h1 Results for #{params[:city]}
 
-%table
-	%thead
-		%tr
-			%td
-			- 7.times do |i|
-				%td= "#{(Date.today + i).month}/#{(Date.today + i).day}"
-	%tbody
-		- @properties.uniq.each do |thisProp|
-			%tr
-				%td= thisProp
-				- 7.times do |i|
-					%td= @results[i].include?(thisProp) ? 'X' : ''
+		%a{href: '/'} New search
 
-%a{href: '/'} New search
+		%table
+			%thead
+				%tr
+					%td
+					- 7.times do |i|
+						%td= "#{(Date.today + i).month}/#{(Date.today + i).day}"
+			%tbody
+				- @properties.uniq.each do |thisProp|
+					%tr
+						%td= thisProp
+						- 7.times do |i|
+							%td= @results[i].include?(thisProp) ? 'X' : ''
+
+		%a{href: '/'} New search
