@@ -1,0 +1,16 @@
+%h1 Results for #{params[:city]}
+
+%p= h @result.keys
+
+= h @result['properties'].map { |prop| prop['name']}
+
+%table
+	%thead
+		%tr
+			%td
+			- 7.times do |i|
+				%td= "#{(Date.today + i).month}/#{(Date.today + i).day}"
+	%tbody
+		- @result['properties'].each do |thisProp|
+			%tr
+				%td= thisProp['name']
