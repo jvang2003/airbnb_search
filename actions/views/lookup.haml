@@ -1,8 +1,6 @@
 %h1 Results for #{params[:city]}
 
-%p= h @result.keys
-
-= h @result['properties'].map { |prop| prop['name']}
+%a{href: '/'} New search
 
 %table
 	%thead
@@ -11,6 +9,10 @@
 			- 7.times do |i|
 				%td= "#{(Date.today + i).month}/#{(Date.today + i).day}"
 	%tbody
-		- @result['properties'].each do |thisProp|
+		- @properties.uniq.each do |thisProp|
 			%tr
-				%td= thisProp['name']
+				%td= thisProp
+				- 7.times do |i|
+					%td= @results[i].include?(thisProp) ? 'X' : ''
+
+%a{href: '/'} New search

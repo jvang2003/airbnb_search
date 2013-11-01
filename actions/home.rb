@@ -1,7 +1,5 @@
 require 'net/http'
 module LocBox
-	# https://www.airbnb.com/search/ajax_get_results?search_view=1&min_bedrooms=0&min_bathrooms=0&min_beds=0&page=1&location=Raleigh%2C+NC&checkin=05%2F01%2F2013&checkout=05%2F12%2F2013&guests=1&sort=0&keywords=&price_min=&price_max=&per_page=21
-
 
 	class AirBnB < Sinatra::Base
 		helpers do
@@ -15,8 +13,7 @@ module LocBox
 			haml :home
 		end
 
-		get '/lookup' do
-			bnb_url = 'https://www.airbnb.com/search/ajax_get_results?search_view=1&min_bedrooms=0&min_bathrooms=0&min_beds=0&page=1&location=Raleigh%2C+NC&checkin=05%2F01%2F2013&checkout=05%2F12%2F2013&guests=1&sort=0&keywords=&price_min=&price_max=&per_page=21'
+		def get_for_date(date)
 			bnb_url = 'https://www.airbnb.com/search/ajax_get_results'
 			bnbParams = {
 				'search_view' => 1,
@@ -25,8 +22,8 @@ module LocBox
 				'min_beds' => 0,
 				'page' => 0,
 				'location' => params['city'],
-				'checkin' => Date.today,
-				'checkout' => Date.today+7,
+				'checkin' => date,
+				'checkout' => date+1,
 				'guests' => 1,
 				'sort' => 0,
 				'per_page' => 21
@@ -38,7 +35,17 @@ module LocBox
 
 			bnbResponse = Net::HTTP.get_response(bnb_uri)
 
-			@result = JSON.parse(bnbResponse.body)
+			JSON.parse(bnbResponse.body)
+		end
+
+		get '/lookup' do
+			@results = []
+
+			7.times do |i|
+				@results[i] = get_for_date(Date.today + i)['properties'].map { |prop| prop['name']}
+			end
+
+			@properties = @results.flatten.map(&:strip).uniq.sort
 
 			haml :lookup
 		end
