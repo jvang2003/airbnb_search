@@ -1,1 +1,12 @@
 PROGRAMMING TEST - AirBnb Search
+
+to run locally:
+
+* clone the repo
+* bundle
+* rackup
+
+to host on Heroku
+
+* heroku create some-unique-name
+* git push heroku master
