@@ -16,7 +16,7 @@
 			%tbody
 				- @properties.uniq.each do |thisProp|
 					%tr
-						%td= h thisProp
+						%td= thisProp
 						- 7.times do |i|
 							%td= @results[i].include?(thisProp) ? 'X' : ''
 

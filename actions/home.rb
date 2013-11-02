@@ -2,12 +2,6 @@ require 'net/http'
 module LocBox
 
 	class AirBnB < Sinatra::Base
-		helpers do
-		  def h(text)
-		    Rack::Utils.escape_html(text)
-		  end
-		end
-
 		# include HTTParty
 		get '/' do
 			haml :home
